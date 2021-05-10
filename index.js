@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
     console.log(accessToken)
 }))
 
-app.get('/auth.google', passport.authenticate('google', {
+app.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']
 }))
 
