@@ -1,7 +1,19 @@
 //import express from 'express'
 const express = require("express");
-const passportConfig = require("./services/passport");
+const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+//to avoid (Schema hasn't been registered for model "users") error
+//we must add require user fist and then passport
+require("./models/User");
+const passportConfig = require("./services/passport");
+const keys = require("./config/keys");
+
+
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
 
